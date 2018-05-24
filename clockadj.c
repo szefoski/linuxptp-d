@@ -33,7 +33,7 @@ static long realtime_nominal_tick;
 
 void clockadj_init(clockid_t clkid)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 #ifdef _SC_CLK_TCK
 	if (clkid == CLOCK_REALTIME) {
 		/* This is USER_HZ in the kernel. */
@@ -49,7 +49,7 @@ void clockadj_init(clockid_t clkid)
 
 void clockadj_set_freq(clockid_t clkid, double freq)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	struct timex tx;
 	memset(&tx, 0, sizeof(tx));
 
@@ -68,7 +68,7 @@ void clockadj_set_freq(clockid_t clkid, double freq)
 
 double clockadj_get_freq(clockid_t clkid)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	double f = 0.0;
 	struct timex tx;
 	memset(&tx, 0, sizeof(tx));
@@ -84,7 +84,7 @@ double clockadj_get_freq(clockid_t clkid)
 
 void clockadj_step(clockid_t clkid, int64_t step)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	struct timex tx;
 	int sign = 1;
 	if (step < 0) {
@@ -109,7 +109,7 @@ void clockadj_step(clockid_t clkid, int64_t step)
 
 void sysclk_set_leap(int leap)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	clockid_t clkid = CLOCK_REALTIME;
 	struct timex tx;
 	const char *m = NULL;
@@ -136,7 +136,7 @@ void sysclk_set_leap(int leap)
 
 void sysclk_set_tai_offset(int offset)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	clockid_t clkid = CLOCK_REALTIME;
 	struct timex tx;
 	memset(&tx, 0, sizeof(tx));
@@ -148,7 +148,7 @@ void sysclk_set_tai_offset(int offset)
 
 int sysclk_max_freq(void)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	clockid_t clkid = CLOCK_REALTIME;
 	int f = 0;
 	struct timex tx;
@@ -171,7 +171,7 @@ int sysclk_max_freq(void)
 
 void sysclk_set_sync(void)
 {
-	pr_info("Daniel Daniel %s", __func__);
+	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
 	clockid_t clkid = CLOCK_REALTIME;
 	struct timex tx;
 	memset(&tx, 0, sizeof(tx));
