@@ -209,6 +209,7 @@ int tsproc_update_offset(struct tsproc *tsp, tmv_t *offset, double *weight)
 		break;
 	}
 
+	pr_info("->>>>>> t1 %" PRIu64 ", t2 %" PRIu64 ", delay %" PRIu64 "", tsp->t2.ns, tsp->t1.ns, delay.ns);
 	/* offset = t2 - t1 - delay */
 	*offset = tmv_sub(tmv_sub(tsp->t2, tsp->t1), delay);
 
