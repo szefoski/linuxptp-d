@@ -407,7 +407,7 @@ static int clock_management_fill_response(struct clock *c, struct port *p,
 		datalen = sizeof(*mtd);
 		break;
 	case TLV_TIME_STATUS_NP:
-		pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
+		pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
 		tsn = (struct time_status_np *) tlv->data;
 		tsn->master_offset = tmv_to_nanoseconds(c->master_offset);
 		tsn->ingress_time = tmv_to_nanoseconds(c->ingress_ts);
@@ -592,6 +592,7 @@ static enum servo_state clock_no_adjust(struct clock *c, tmv_t ingress,
 	if (c->stats.max_count > 1) {
 		clock_stats_update(&c->stats, tmv_dbl(c->master_offset), freq);
 	} else {
+		pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
 		pr_info("master offset %10" PRId64 " s%d freq %+7.0f "
 			"path delay %9" PRId64,
 			tmv_to_nanoseconds(c->master_offset), state, freq,
@@ -719,7 +720,7 @@ static int clock_utc_correct(struct clock *c, tmv_t ingress)
 	offset.tv_sec = utc_offset;
 	offset.tv_nsec = 0;
 
-	pr_info("Daniel Daniel %s, %d, %s", __func__, __LINE__, __FILE__);
+	pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
 	/* Local clock is UTC, but master is TAI. */
 	c->master_offset = tmv_add(c->master_offset, timespec_to_tmv(offset));
 	return 0;
