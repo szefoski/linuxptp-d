@@ -590,6 +590,7 @@ static enum servo_state clock_no_adjust(struct clock *c, tmv_t ingress,
 	freq = (1.0 - ratio) * 1e9;
 
 	if (c->stats.max_count > 1) {
+		pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
 		clock_stats_update(&c->stats, tmv_dbl(c->master_offset), freq);
 	} else {
 		pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
@@ -1609,8 +1610,10 @@ enum servo_state clock_synchronize(struct clock *c, tmv_t ingress, tmv_t origin)
 	c->servo_state = state;
 
 	if (c->stats.max_count > 1) {
+		pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
 		clock_stats_update(&c->stats, tmv_dbl(c->master_offset), adj);
 	} else {
+		pr_info("&&&***     %s, %s, %d", __FILE__, __func__, __LINE__);
 		pr_info("master offset %10" PRId64 " s%d freq %+7.0f "
 			"path delay %9" PRId64,
 			tmv_to_nanoseconds(c->master_offset), state, adj,
